@@ -1,0 +1,136 @@
+:root{
+    --left-color: rgba(87,84,236,0.7);
+    --right-color: rgba(43,43,43,0.7);
+    --left-hover: rgba(87,84,236,1);
+    --right-hover: rgba(28,122,28,1);
+    --h-width: 75%;
+    --o-width: 25%;
+    --speed: 1.1s;
+}
+
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+}
+
+h1{
+    font-size: 4rem;
+    color: white;
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+.btn   {
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translateX(-50%);
+    text-decoration: none;
+    color: white;
+    border: white solid 0.3rem;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    width: 15rem;
+    padding: 1.5rem;
+}
+
+.split.left .btn:hover{
+    background-color: var(--left-hover);
+    border-color: var(--left-hover);
+}
+
+.split.right .btn:hover{
+    background-color: var(--right-hover);
+    border-color: var(--right-hover);
+}
+
+
+.container{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #333;
+}
+
+.split{
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+}
+.split.left{
+    left: 0;
+    background: url('imageL.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.split.left::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--left-color);
+}
+
+
+.split.right{
+    right: 0;
+    background: url('imageR.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.split.right::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--right-color);
+}
+
+.split.left,
+.split.right,
+.split.left::before,
+.split.right::before
+{
+    transition: all var(--speed) ease-in-out;
+}
+
+.hover-left .left{
+    width: var(--h-width);
+}
+.hover-left .right{
+    width: var(--o-width);
+}
+
+
+.hover-right .right{
+    width: var(--h-width);
+}
+.hover-right .left{
+    width: var(--o-width);
+}
+
+
+@media(max-width: 800px){
+    h1{
+        font-size: 2rem;
+    }
+    .btn{
+        padding: 1.2rem;
+        width: 12rem;
+    }
+}
+
+
+
